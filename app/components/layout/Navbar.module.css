@@ -1,0 +1,417 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+:global(.dark) .header {
+    background: rgba(10, 10, 10, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+}
+
+:global(.dark) .logo {
+    color: #fff;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navItemWrapper {
+    position: relative;
+    padding: 12px 0;
+}
+
+.navLink {
+    color: #555;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+:global(.dark) .navLink {
+    color: #aaa;
+}
+
+.navLink:hover,
+.activeNavLink {
+    color: #111;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+:global(.dark) .navLink:hover,
+:global(.dark) .activeNavLink {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.pillLink {
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    color: #111;
+}
+
+:global(.dark) .pillLink {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.arrow {
+    opacity: 0.5;
+    transition: transform 0.2s;
+}
+
+.navItemWrapper:hover .arrow {
+    transform: rotate(180deg);
+}
+
+/* 
+   DROPDOWN POSITIONING SYSTEM 
+   All dropdowns are anchored to the horizontal center of the Nav Link.
+   The JS (Framer Motion) applies translateX to shift them as needed.
+*/
+.dropdown,
+.megaMenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    /* Anchor to link center */
+    padding-top: 20px;
+    z-index: 1100;
+    /* We DON'T set transform: x here, JS handles it */
+}
+
+.megaMenu {
+    width: 900px;
+}
+
+.dropdown {
+    width: 280px;
+}
+
+/* The pointer is absolute inside the dropdown box */
+.dropdownPointer {
+    position: absolute;
+    top: 12px;
+    /* JS passes --pointer-left to keep this under the link center */
+    left: var(--pointer-left, 50%);
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 2;
+}
+
+:global(.dark) .dropdownPointer {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dropdownContent {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow:
+        0 20px 50px -10px rgba(0, 0, 0, 0.15),
+        0 4px 15px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+:global(.dark) .dropdownContent {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 25px 60px -15px rgba(0, 0, 0, 0.5),
+        0 4px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Standard Dropdown Link Styles */
+.standardDropdownItems {
+    padding: 10px 0;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    color: #555;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+:global(.dark) .dropdownItem {
+    color: #999;
+}
+
+.dropdownItem:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: #111;
+    padding-left: 32px;
+}
+
+:global(.dark) .dropdownItem:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+}
+
+.dropdownHeader {
+    font-weight: 800;
+    color: #111;
+    padding: 20px 24px 8px;
+    pointer-events: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.4;
+}
+
+:global(.dark) .dropdownHeader {
+    color: #fff;
+}
+
+/* Mega Menu Grid Layout */
+.megaGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 480px;
+}
+
+.megaMain {
+    padding: 40px;
+}
+
+.megaHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.megaHeader h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.03em;
+}
+
+:global(.dark) .megaHeader h3 {
+    color: #fff;
+}
+
+.arrowBadge {
+    width: 26px;
+    height: 26px;
+    background: #6c5ce7;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.megaColumns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.megaColHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: #888;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.megaItems {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.megaItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: #444;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+:global(.dark) .megaItem {
+    color: #aaa;
+}
+
+.megaItem:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: #111;
+    transform: translateX(6px);
+}
+
+:global(.dark) .megaItem:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+}
+
+.itemIcon {
+    color: #6c5ce7;
+}
+
+.megaLink {
+    margin-top: 15px;
+    color: #6c5ce7;
+    font-weight: 800;
+}
+
+.megaCta {
+    background: #0a0a0a;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.ctaCard {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 35px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaCard h4 {
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.ctaCardButton {
+    background: #6c5ce7;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    align-self: flex-start;
+}
+
+.ctaCardButton:hover {
+    background: #5b4cc4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+}
+
+.avatarGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.authActions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ctaButton {
+    background: #ff5722;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 800;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+    text-decoration: none;
+}
+
+.ctaButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.5);
+    background: #e64a19;
+}
+
+@media (max-width: 1280px) {
+    .megaMenu {
+        width: 850px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        display: none;
+    }
+}

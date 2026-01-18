@@ -1,0 +1,308 @@
+.section {
+    padding: 100px 0;
+    background: #fdf8f2;
+    /* Adjusted cream to match reference */
+    position: relative;
+    overflow: hidden;
+}
+
+.backgroundGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    opacity: 1;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #111;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[class='dark'] .badge {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.02em;
+}
+
+.description {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+.sliderContainer {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* Slider Mechanism */
+.sliderOverflow {
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+.slidesWrapper {
+    display: flex;
+}
+
+.slide {
+    flex: 0 0 33.3331%;
+    /* Using decimals for rounding safety */
+    padding: 0 12px;
+}
+
+.slideInternal {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Connected Step Marker */
+.stepMarker {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.stepLabel {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+.markerCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    z-index: 5;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.lineConnector {
+    position: absolute;
+    top: 58px;
+    /* Center of markerCircle */
+    left: 42px;
+    right: -100%;
+    height: 1px;
+    border-top: 2px dotted rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.card {
+    background: #fff;
+    border-radius: 32px;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    border-color: rgba(108, 92, 231, 0.1);
+}
+
+.cardTitle {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.cardDescription {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.pointsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pointItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.pointCheck {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f0f0ff;
+    /* Subtle tint */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c5ce7;
+    /* Brand purple ticks */
+}
+
+/* Navigation Buttons */
+.navBtn {
+    position: absolute;
+    top: 55%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.navBtn:hover {
+    background: #6c5ce7;
+    color: #fff;
+}
+
+.prev {
+    left: -25px;
+}
+
+.next {
+    right: -25px;
+}
+
+/* Pagination Dots */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.pagDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagActive {
+    background: #6c5ce7;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Decoration */
+.floatingDoc {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.docInner {
+    width: 120px;
+    height: 160px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    transform: rotate(10deg);
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.docLine {
+    height: 6px;
+    background: #f3f4f6;
+    border-radius: 3px;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .slide {
+        flex: 0 0 50%;
+    }
+
+    .title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        flex: 0 0 100%;
+    }
+
+    .title {
+        font-size: 2.3rem;
+    }
+
+    .navBtn {
+        display: none;
+    }
+}

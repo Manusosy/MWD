@@ -1,0 +1,202 @@
+.section {
+    padding: 120px 0;
+    background: var(--bg-main);
+    overflow: hidden;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.badge {
+    display: inline-flex;
+    padding: 6px 14px;
+    background: rgba(108, 92, 231, 0.08);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6c5ce7;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.scrollerContainer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 40px 0;
+}
+
+.scroller {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.card {
+    width: 380px;
+    background: #fff;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+}
+
+.text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #333;
+    font-weight: 500;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f0f0f0;
+}
+
+.userInfo h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.userInfo p {
+    font-size: 0.85rem;
+    color: #777;
+    font-weight: 500;
+}
+
+/* Review Badges Area */
+.badgesWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+.reviewBadge {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 35px;
+    background: #f9f9f9;
+    border-radius: 20px;
+    min-width: 320px;
+}
+
+.badgeLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.badgeHeading {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #666;
+    letter-spacing: 0.05em;
+}
+
+.clutchText {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+}
+
+.badgeRight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.badgeStars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.halfStar {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+}
+
+.reviewCount {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.googleIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.3333%);
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .badge {
+        min-width: 100%;
+        justify-content: center;
+    }
+}

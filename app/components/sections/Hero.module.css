@@ -1,0 +1,198 @@
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    overflow: hidden;
+    /* Faded Grid Background */
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+[class='dark'] .section {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.backgroundGlow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 90, 31, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(159, 90, 255, 0.04) 0%, transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+[class='dark'] .backgroundGlow {
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 90, 31, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(159, 90, 255, 0.08) 0%, transparent 50%);
+}
+
+.container {
+    max-width: var(--max-width);
+    width: 100%;
+    padding: 0 24px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    /* Text slightly wider */
+    gap: 60px;
+    align-items: center;
+}
+
+/* Text Side (Left) */
+.textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[class='dark'] .badge {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.title {
+    font-size: 3.5rem;
+    /* Scaled down from 4.5rem */
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--text-main);
+    min-height: 140px;
+    /* Prevent layout shift */
+}
+
+.highlight {
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 540px;
+    min-height: 80px;
+}
+
+.ctaGroup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.primaryButton {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px -5px rgba(255, 90, 31, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.primaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -5px rgba(255, 90, 31, 0.5);
+}
+
+.secondaryButton {
+    transition: transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.secondaryButton:hover {
+    transform: translateY(-2px);
+    background: var(--bg-subtle);
+}
+
+/* Image Side (Right) */
+.visualContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.mockupContainer {
+    width: 100%;
+    position: relative;
+}
+
+.mockup {
+    width: 100%;
+    border-radius: 0;
+    /* REMOVED ROUNDING */
+    box-shadow: none;
+    /* REMOVED SHADOW to blend */
+    background: transparent;
+    overflow: visible;
+    transition: transform 0.3s ease;
+    transform: scale(1.1);
+    /* Increased scale as requested */
+}
+
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding-top: 40px;
+    }
+
+    .textContent {
+        align-items: center;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        min-height: auto;
+    }
+
+    .subtitle {
+        margin: 0 auto 32px auto;
+        min-height: auto;
+    }
+
+    .ctaGroup {
+        justify-content: center;
+    }
+}
